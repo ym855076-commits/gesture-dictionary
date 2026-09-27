@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словарь жестов</title>
+    
+    <!-- PWA и тема -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+    
+    <style>
+        :root {
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --soft: #6b7280;
+            --line: #e5e7eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--card-bg);
+            min-height: 100vh;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .hero-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--line);
+            margin-bottom: 20px;
+        }
+
+        .hero-brand img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .hero-brand h3 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .hero-brand span {
+            font-size: 12px;
+            color: var(--soft);
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            outline: none;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: var(--primary);
+        }
+
+        .gesture-list {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .gesture-card {
+            background: #f9fafb;
+            border: 1px solid var(--line);
+            padding: 14px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gesture-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .gesture-category {
+            font-size: 12px;
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .footer-credit {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--line);
+            font-size: 13px;
+            color: var(--soft);
+        }
+
+        .footer-credit strong {
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="hero-brand">
+            <img src="icon-512.png" alt="Герб / Логотип">
+            <div>
+                <h3>Школа-интернат</h3>
+                <span>Словарь жестового языка</span>
+            </div>
+        </div>
+
+        <h1>Словарь жестов</h1>
+
+        <input type="text" class="search-box" id="searchInput" placeholder="Поиск жеста...">
+
+        <div class="gesture-list" id="gestureList">
+            <div class="gesture-card">
+                <span class="gesture-title">Здравствуйте</span>
+                <span class="gesture-category">Приветствие</span>
+            </div>
+            <div class="gesture-card">
+                <span class="gesture-title">Спасибо</span>
+                <span class="gesture-category">Общение</span>
+            </div>
+            <div class="gesture-card">
+                <span class="gesture-title">До свидания</span>
+                <span class="gesture-category">Приветствие</span>
+            </div>
+        </div>
+
+        <div class="footer-credit">
+            <p style="margin: 0 0 4px;">Разработчик: <strong>Murzaew Yusup</strong></p>
+            <p style="margin: 0; font-size: 11px;">Работает офлайн</p>
+        </div>
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(() => console.log('Service Worker активен!'))
+                    .catch((err) => console.log('Ошибка SW:', err));
+            });
+        }
+    </script>
+</body>
+</html>
