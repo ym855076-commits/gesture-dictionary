@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Словарь жестов</title>
     
-    <!-- PWA и тема -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4f46e5">
     
@@ -15,7 +14,6 @@
             --card-bg: #ffffff;
             --text-color: #1f2937;
             --primary: #4f46e5;
-            --primary-hover: #4338ca;
             --soft: #6b7280;
             --line: #e5e7eb;
         }
@@ -51,10 +49,19 @@
             margin-bottom: 20px;
         }
 
-        .hero-brand img {
+        /* Автоматическая стильная иконка-логотип */
+        .app-logo {
             width: 48px;
             height: 48px;
-            object-fit: contain;
+            background: linear-gradient(135deg, #4f46e5, #818cf8);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
         }
 
         .hero-brand h3 {
@@ -83,7 +90,6 @@
             outline: none;
             box-sizing: border-box;
             margin-bottom: 15px;
-            transition: border-color 0.2s;
         }
 
         .search-box:focus {
@@ -139,7 +145,7 @@
 
     <div class="app-container">
         <div class="hero-brand">
-            <img src="icon-512.png" alt="Герб / Логотип">
+            <div class="app-logo">Ж</div>
             <div>
                 <h3>Школа-интернат</h3>
                 <span>Словарь жестового языка</span>
